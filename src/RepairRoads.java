@@ -96,11 +96,17 @@ public class RepairRoads {
   }
 
   private static int getNumRobots(Network network)  {
+
     HashMap<Integer, Node> adjacencyList = getAdjacencyList(network);
+
     HashMap<Integer, Boolean> visited = new HashMap<>();
+
     Queue<Integer> toVisit = new LinkedList<>();
+
     PriorityQueue<Integer> notSeen = new PriorityQueue<>(adjacencyList.keySet());
+
     List<List<Road>> allPaths = new ArrayList<>();
+
     while (notSeen.size() != 0)  {
       List<Road> paths = new ArrayList<>();
       Node n = adjacencyList.get(notSeen.poll());
@@ -108,7 +114,7 @@ public class RepairRoads {
       while (!toVisit.isEmpty()) {
         Node curr = adjacencyList.get(toVisit.poll());
         for (int i : curr.neighbors) {
-          if (!visited.get(i)) {
+          if (visited.get(i) == null) {
             visited.put(i, true);
             notSeen.remove(i);
             Road r = new Road(n.id, i);
