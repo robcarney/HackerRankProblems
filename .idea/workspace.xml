@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82bd90b1-63a9-404f-be79-98c59f3e0313" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/src/algorithms/warmup/BirthdayCake.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/src/RepairRoads.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/src/algorithms/warmup/BirthdayCake.java" afterPath="$PROJECT_DIR$/src/src/BirthdayCake.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/src/algorithms/warmup/MiniMaxSum.java" afterPath="$PROJECT_DIR$/src/src/MiniMaxSum.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,10 +29,10 @@
         </entry>
       </file>
       <file leaf-file-name="MiniMaxSum.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/src/algorithms/warmup/MiniMaxSum.java">
+        <entry file="file://$PROJECT_DIR$/src/src/MiniMaxSum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+            <state relative-caret-position="330">
+              <caret line="22" column="31" lean-forward="false" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,13 +40,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BirthdayCake.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/src/algorithms/warmup/BirthdayCake.java">
+      <file leaf-file-name="BirthdayCake.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/src/BirthdayCake.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="26" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+            <state relative-caret-position="270">
+              <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RepairRoads.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/src/RepairRoads.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="42" column="8" lean-forward="false" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#408#409#0" expanded="true" />
+                <element signature="e#452#453#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,6 +93,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/src/algorithms/warmup/MiniMaxSum.java" />
         <option value="$PROJECT_DIR$/src/src/algorithms/warmup/BirthdayCake.java" />
+        <option value="$PROJECT_DIR$/src/src/BirthdayCake.java" />
+        <option value="$PROJECT_DIR$/src/src/RepairRoads.java" />
       </list>
     </option>
   </component>
@@ -148,10 +167,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="warmup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -168,6 +183,11 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -591,12 +611,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1500343397910</updated>
-      <workItem from="1500343399404" duration="2817000" />
+      <workItem from="1500343399404" duration="4699000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2817000" />
+    <option name="totallyTimeSpent" value="4699000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="43" width="1680" height="926" extended-state="0" />
@@ -658,22 +678,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/src/algorithms/warmup/MiniMaxSum.java">
+    <entry file="file://$PROJECT_DIR$/src/src/MiniMaxSum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+        <state relative-caret-position="330">
+          <caret line="22" column="31" lean-forward="false" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/src/algorithms/warmup/BirthdayCake.java">
+    <entry file="file://$PROJECT_DIR$/src/src/BirthdayCake.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="26" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        <state relative-caret-position="270">
+          <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/src/RepairRoads.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="8" lean-forward="false" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#452#453#0" expanded="true" />
           </folding>
         </state>
       </provider>
