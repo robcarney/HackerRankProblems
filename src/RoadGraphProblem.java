@@ -8,26 +8,26 @@ public class RoadGraphProblem {
 
   public static class Graph  {
     int v; // Number of nodes
-    LinkedList<Integer> adj[];
+    List<LinkedList<Integer>> adj;
 
     Graph(int v)  {
       this.v = v;
-      this.adj = new LinkedList[v];
+      this.adj = new ArrayList<>();
       for (int i = 0; i < v; i++)  {
-        adj[i] = new LinkedList<>();
+        adj.add(new LinkedList<>());
       }
     }
 
     void addEdge(int start, int end)  {
-      adj[start].add(end);
-      adj[end].add(start);
+      adj.get(start).add(end);
+      adj.get(end).add(start);
     }
 
     void removeEdge(int start, int end)  {
-      int endInd = adj[start].indexOf(end);
-      int startInd = adj[end].indexOf(start);
-      adj[start].remove(endInd);
-      adj[end].remove(startInd);
+      int endInd = adj.get(start).indexOf(end);
+      int startInd = adj.get(end).indexOf(start);
+      adj.get(start).remove(endInd);
+      adj.get(end).remove(startInd);
     }
 
     int numEdges()  {
@@ -43,46 +43,69 @@ public class RoadGraphProblem {
       StringBuilder result = new StringBuilder();
       for (int i = 0; i < v; i++)  {
         result.append("Node " + Integer.toString(i) + ":\n");
-        for (int j : adj[i])  {
+        for (int j : adj.get(i))  {
           result.append("   " + Integer.toString(j) + "\n");
         }
       }
       return result.toString();
     }
 
-    public int getHighestDegreeNeighbor(int node)  {
+    public int getHighestDegreeNeighborHelp(int node, List<Integer> seen)  {
+      int bestNode = -1;
+      LinkedList<Integer> neighbors = adj.get(node);
+      for (int i : neighbors)  {
+      }
+      return bestNode;
+    }
+
+    public int getHighestDegreeNeighbor(int node, boolean repeat)  {
       int best = 0;
       int bestNode = -1;
-      LinkedList<Integer> neighbors = adj[node];
+      LinkedList<Integer> neighbors = adj.get(node);
       for (int i : neighbors)  {
-        if (adj[i].size() > best)  {
-          best = adj[i].size();
+        if (adj.get(i).size() > best)  {
+          best = adj.get(i).size();
           bestNode = i;
+        }
+        if (adj.get(i).size() == best && repeat && bestNode != -1)  {
+          if (node == 3)  {
+            System.out.println("Got here");
+          }
+          int iDegreeNeighbor = getHighestDegreeNeighbor(i, false);
+          int degreeNeighbor = getHighestDegreeNeighbor(bestNode, false);
+          if (iDegreeNeighbor > degreeNeighbor)  {
+            bestNode = i;
+          }
         }
       }
       return bestNode;
     }
 
     public void removeEdgesForNode(int node)  {
-      LinkedList<Integer> l;
-      try {
-        l = (LinkedList<Integer>) adj[node].clone();
-      } catch (Exception e)  {
-        l = new LinkedList<>();
+      LinkedList<Integer> l = new LinkedList<>();
+      for (int x : adj.get(node))  {
+        l.add(x);
       }
       for (int i : l)  {
-        this.removeEdge(node,i);
+        if (this.adj.get(i).size() < 2)  this.removeEdge(node,i);
       }
     }
 
     int getLowestPositiveNode()  {
       int bestInd = -1;
       int best = 10000;
-      for (int i = 0; i < adj.length; i++)  {
-        int size = adj[i].size();
+      for (int i = 0; i < adj.size(); i++)  {
+        int size = adj.get(i).size();
         if (size != 0 && size < best)  {
           bestInd = i;
           best = size;
+        }
+        else if (size == best && bestInd != -1)  {
+          int iBestNeighbor = adj.get(getHighestDegreeNeighbor(i, true)).size();
+          int bestNeighbor = adj.get(getHighestDegreeNeighbor(bestInd, true)).size();
+          if (iBestNeighbor < bestNeighbor) {
+            bestInd = i;
+          }
         }
       }
       return bestInd;
@@ -106,11 +129,18 @@ public class RoadGraphProblem {
     return new ArrayList<>();
   }
 
+  public static Boolean[] genBoolArray(int n)  {
+    Boolean[] result = new Boolean[n];
+    for (int i = 0; i < n; i++)  {
+      result[i] = false;
+    }
+    return result;
+  }
+
   public static List<Integer> getCycleUtil(Graph g, int ind, Boolean[] visited, int parent)  {
     visited[ind] = true;
-
     Integer i;
-    Iterator<Integer> iter = g.adj[ind].iterator();
+    Iterator<Integer> iter = g.adj.get(ind).iterator();
     while (iter.hasNext())  {
       i = iter.next();
 
@@ -156,11 +186,12 @@ public class RoadGraphProblem {
     while (g.numEdges() > 0)  {
       int ind = g.getLowestPositiveNode();
       while (true)  {
-        int bestNeighbor = g.getHighestDegreeNeighbor(ind);
-        g.removeEdgesForNode(ind);
+        int bestNeighbor = g.getHighestDegreeNeighbor(ind, true);
         if (bestNeighbor == -1)  { break; }
+        g.removeEdge(ind, bestNeighbor);
         ind = bestNeighbor;
       }
+      System.out.println("Break");
       robots++;
     }
     return robots;
@@ -187,11 +218,12 @@ public class RoadGraphProblem {
   }
 
   public static void main(String[] args)  {
+/*
     Graph[] input = scanInput();
     for (Graph g : input)  {
       System.out.println(numRobots(g));
     }
-    /*
+    */
     Graph g = new Graph(7);
     g.addEdge(0,1);
     g.addEdge(0,2);
@@ -201,10 +233,7 @@ public class RoadGraphProblem {
     g.addEdge(3,5);
     g.addEdge(4,6);
     g.addEdge(5,6);
-    List<Integer> cycle = getCycle(g);
-    for (int i : cycle)  {
-      System.out.println(i);
-    }
-    System.out.println(numRobots(g));*/
+    System.out.println(numRobots(g));
+
   }
 }
