@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -71,11 +72,22 @@ public class RepairRoads {
     }
   }
 
-  private static int getNumRobots(Network n)  {
-    HashMap<Node> adjacencyList = getAdjacencyList(n);
+  private static int getNumRobots(Network network)  {
+    HashMap<Integer, Node> adjacencyList = getAdjacencyList(network);
     HashMap<Integer, Boolean> visited = new HashMap<>();
     Queue<Integer> toVisit = new LinkedList<>();
+    PriorityQueue<Integer> notSeen = new PriorityQueue<>(adjacencyList.keySet());
+    List<List<Road>> allPaths = new ArrayList<>();
+    boolean stop = false;
+    int numRobots = 0;
+    while (notSeen.size() != 0)  {
+      Node n = adjacencyList.get(notSeen.poll());
+      for (int i : n.neighbors)  {
 
+      }
+    }
+
+    return numRobots;
   }
 
   private static HashMap<Integer, Node> getAdjacencyList(Network n)  {
@@ -92,7 +104,7 @@ public class RepairRoads {
       map.get(i).addNeightbor(j);
       map.get(j).addNeightbor(i);
     }
-    return new map;
+    return map;
   }
 
 }
