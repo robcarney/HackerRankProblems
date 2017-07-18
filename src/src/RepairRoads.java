@@ -72,13 +72,13 @@ public class RepairRoads {
   }
 
   private static int getNumRobots(Network n)  {
-    List<Node> adjacencyList = getAdjacencyList(n);
+    HashMap<Node> adjacencyList = getAdjacencyList(n);
     HashMap<Integer, Boolean> visited = new HashMap<>();
     Queue<Integer> toVisit = new LinkedList<>();
-    
+
   }
 
-  private static List<Node> getAdjacencyList(Network n)  {
+  private static HashMap<Integer, Node> getAdjacencyList(Network n)  {
     HashMap<Integer,Node> map = new HashMap<>();
     for (Road r : n.roads)  {
       int i = r.start;
@@ -92,7 +92,7 @@ public class RepairRoads {
       map.get(i).addNeightbor(j);
       map.get(j).addNeightbor(i);
     }
-    return new ArrayList<>(map.values());
+    return new map;
   }
 
 }
