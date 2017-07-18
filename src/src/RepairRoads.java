@@ -1,4 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -19,6 +18,26 @@ public class RepairRoads {
     public Road(int start, int end) {
       this.start = start;
       this.end = end;
+    }
+
+    @Override
+    public boolean equals(Object o)  {
+      if (!(o instanceof Road))  {
+        return false;
+      }
+      else  {
+        Road r = (Road) o;
+        if ((this.start == r.start && this.end == r.end) ||
+            (this.end == r.start && this.start == r.end))  {
+          return true;
+        }
+        return false;
+      }
+    }
+
+    @Override
+    public int hashCode()  {
+      return this.start + (7 * this.end);
     }
   }
 
@@ -70,6 +89,10 @@ public class RepairRoads {
         cases[count].addRoad(r);
       }
     }
+
+    for (Network n : cases)  {
+      System.out.println(getNumRobots(n));
+    }
   }
 
   private static int getNumRobots(Network network)  {
@@ -78,16 +101,27 @@ public class RepairRoads {
     Queue<Integer> toVisit = new LinkedList<>();
     PriorityQueue<Integer> notSeen = new PriorityQueue<>(adjacencyList.keySet());
     List<List<Road>> allPaths = new ArrayList<>();
-    boolean stop = false;
-    int numRobots = 0;
     while (notSeen.size() != 0)  {
+      List<Road> paths = new ArrayList<>();
       Node n = adjacencyList.get(notSeen.poll());
-      for (int i : n.neighbors)  {
-
+      toVisit.add(n.id);
+      while (!toVisit.isEmpty()) {
+        Node curr = adjacencyList.get(toVisit.poll());
+        for (int i : curr.neighbors) {
+          if (!visited.get(i)) {
+            visited.put(i, true);
+            notSeen.remove(i);
+            Road r = new Road(n.id, i);
+            if (!paths.contains(r)) {
+              paths.add(r);
+            }
+            toVisit.add(i);
+          }
+        }
       }
+      allPaths.add(paths);
     }
-
-    return numRobots;
+    return allPaths.size();
   }
 
   private static HashMap<Integer, Node> getAdjacencyList(Network n)  {
