@@ -1,5 +1,5 @@
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -28,6 +28,7 @@ public class RoadGraphProblem {
       int startInd = adj.get(end).indexOf(start);
       adj.get(start).remove(endInd);
       adj.get(end).remove(startInd);
+      System.out.println(String.format("Removing %s and %s", start, end));
     }
 
     int numEdges()  {
@@ -58,6 +59,19 @@ public class RoadGraphProblem {
       return bestNode;
     }
 
+    public int getLowestDegreeNeighbor(int start)  {
+      int best = 100000;
+      int bestNode = -1;
+      LinkedList<Integer> neighbors = adj.get(start);
+      for (int i : neighbors)  {
+        if (adj.get(i).size() < best)  {
+          best = adj.get(i).size();
+          bestNode = i;
+        }
+      }
+      return bestNode;
+    }
+
     public int getHighestDegreeNeighbor(int node, boolean repeat)  {
       int best = 0;
       int bestNode = -1;
@@ -68,9 +82,6 @@ public class RoadGraphProblem {
           bestNode = i;
         }
         if (adj.get(i).size() == best && repeat && bestNode != -1)  {
-          if (node == 3)  {
-            System.out.println("Got here");
-          }
           int iDegreeNeighbor = getHighestDegreeNeighbor(i, false);
           int degreeNeighbor = getHighestDegreeNeighbor(bestNode, false);
           if (iDegreeNeighbor > degreeNeighbor)  {
@@ -100,11 +111,12 @@ public class RoadGraphProblem {
           bestInd = i;
           best = size;
         }
-        else if (size == best && bestInd != -1)  {
-          int iBestNeighbor = adj.get(getHighestDegreeNeighbor(i, true)).size();
-          int bestNeighbor = adj.get(getHighestDegreeNeighbor(bestInd, true)).size();
-          if (iBestNeighbor < bestNeighbor) {
+        else if (size == best && bestInd != -1 && best == 1)  {
+          int iBestNeighbor = adj.get(i).get(0);
+          int bestNeighbor = adj.get(bestInd).get(0);
+          if (adj.get(iBestNeighbor).size() < adj.get(bestNeighbor).size()) {
             bestInd = i;
+            if (adj.get(iBestNeighbor).size() == 2)  { return bestInd; }
           }
         }
       }
@@ -184,14 +196,28 @@ public class RoadGraphProblem {
     //removeCycles(g);
     int robots = 0;
     while (g.numEdges() > 0)  {
-      int ind = g.getLowestPositiveNode();
+      int start = g.getLowestPositiveNode();
+      int end = g.getLowestDegreeNeighbor(start);
       while (true)  {
-        int bestNeighbor = g.getHighestDegreeNeighbor(ind, true);
-        if (bestNeighbor == -1)  { break; }
-        g.removeEdge(ind, bestNeighbor);
-        ind = bestNeighbor;
+        if (end == -1)  { break; }
+        g.removeEdge(start, end);
+        int startLDN = g.getLowestDegreeNeighbor(start);
+        int endLDN = g.getLowestDegreeNeighbor(end);
+        if (startLDN < 0) {
+          if (endLDN < 0) {
+            break;
+          }
+          start = end;
+          end = endLDN;
+        }
+        else if (endLDN < 0 || g.adj.get(startLDN).size() < g.adj.get(endLDN).size())  {
+          end = startLDN;
+        }
+        else  {
+          start = end;
+          end = endLDN;
+        }
       }
-      System.out.println("Break");
       robots++;
     }
     return robots;
@@ -218,13 +244,12 @@ public class RoadGraphProblem {
   }
 
   public static void main(String[] args)  {
-/*
+    /*
     Graph[] input = scanInput();
     for (Graph g : input)  {
       System.out.println(numRobots(g));
-    }
-    */
-    Graph g = new Graph(7);
+    }*/
+    Graph g = new Graph(10);
     g.addEdge(0,1);
     g.addEdge(0,2);
     g.addEdge(3,2);
@@ -233,7 +258,38 @@ public class RoadGraphProblem {
     g.addEdge(3,5);
     g.addEdge(4,6);
     g.addEdge(5,6);
-    System.out.println(numRobots(g));
-
+    g.addEdge(7,4);
+    g.addEdge(8,2);
+    g.addEdge(9,8);
+    //System.out.println(numRobots(g));
+    Graph g1 = new Graph(11);
+    g1.addEdge(0,1);
+    g1.addEdge(2,1);
+    g1.addEdge(2,3);
+    g1.addEdge(3,8);
+    g1.addEdge(3,4);
+    g1.addEdge(3,5);
+    g1.addEdge(4,6);
+    g1.addEdge(6,7);
+    g1.addEdge(7,8);
+    g1.addEdge(8,9);
+    g1.addEdge(9,10);
+    //System.out.println(numRobots(g1));
+    Graph g2 = new Graph(15);
+    g2.addEdge(0,11);
+    g2.addEdge(1,7);
+    g2.addEdge(1,11);
+    g2.addEdge(2,11);
+    g2.addEdge(2,14);
+    g2.addEdge(3,4);
+    g2.addEdge(4,10);
+    g2.addEdge(4,13);
+    g2.addEdge(5,13);
+    g2.addEdge(4,8);
+    g2.addEdge(6,10);
+    g2.addEdge(7,9);
+    g2.addEdge(8,11);
+    g2.addEdge(12,11);
+    System.out.println(numRobots(g2));
   }
 }
