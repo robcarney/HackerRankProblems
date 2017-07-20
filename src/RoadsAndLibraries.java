@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,28 +32,26 @@ public class RoadsAndLibraries {
     }
 
     public int numDisconnected()  {
-      List<Integer> connected = this.depthFirstSearch();
-      HashMap<Integer,List<Integer>> connectedAdj = new HashMap<>();
-      HashMap<Integer, List<Integer>> disconnectedAdj = new HashMap<>();
-      boolean fullyConnected = true;
       int result = 1;
-      for (int i : adj.keySet())  {
-        if (!connected.contains(i))  {
-          if (adj.get(i).size() == 0)  {
-            result += 1;
-          }  else {
-            disconnectedAdj.put(i, adj.get(i));
-            fullyConnected = false;
-          }
+      List<Integer> iter = new ArrayList<>(this.adj.keySet());
+      for (int k : iter) {
+        if (adj.get(k).size() == 0)  {
+          this.adj.remove(k);
+          result++;
         }
       }
-      if (fullyConnected)  {
-        return result;
+      List<Integer> connected = this.depthFirstSearch();
+      for (int j : connected)  {
+        this.adj.remove(j);
       }
-      else  {
-        Graph g = new Graph(disconnectedAdj);
-        return result + g.numDisconnected();
+      while (!this.adj.keySet().isEmpty())  {
+        result++;
+        connected = this.depthFirstSearch();
+        for (int j : connected)  {
+          this.adj.remove(j);
+        }
       }
+      return result;
     }
 
     List<Integer> depthFirstSearch()  {
@@ -88,10 +87,6 @@ public class RoadsAndLibraries {
       stack.push(start);
       while (!stack.empty())  {
         int curr = stack.pop();
-        if (explored.get(curr) == null)  {
-          System.out.println(curr);
-          System.exit(0);
-        }
         if (!explored.get(curr)) {
           explored.put(curr, true);
           for (int i : adj.get(curr))  {
@@ -100,24 +95,22 @@ public class RoadsAndLibraries {
           result.add(curr);
         }
       }
-
-
       return result;
     }
 
   }
 
   public static long cost(long cLib, long cRoad, Graph g, int gSize)  {
-    int discon = g.numDisconnected();
     if (cLib <= cRoad)  {
       return cLib * (long) gSize;
     }
+    int discon = g.numDisconnected();
     return (cRoad * (gSize - discon)) + (cLib * discon);
   }
 
 
   public static void main(String[] args) {
-    File file = new File("input.txt");
+    File file = new File("input1.txt");
     List<Long> costs = new ArrayList<>();
     try {
       Scanner in = new Scanner(file);
@@ -134,7 +127,6 @@ public class RoadsAndLibraries {
           g.addEdge(city_1,city_2);
         }
         costs.add(cost(x,y,g,n));
-        System.out.println(g.numDisconnected());
       }
     } catch (Exception ex)  {
       ex.printStackTrace();
