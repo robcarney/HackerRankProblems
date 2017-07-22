@@ -73,6 +73,26 @@ public class RoadsAndLibraries {
     return (cRoad * (gSize - discon)) + (cLib * discon);
   }
 
+  static void depthFirstSearch(HashMap<Integer,List<Integer>> adj, HashMap<Integer,Boolean> explored)  {
+    if (adj.keySet().size() == 0)  {
+      adj = new HashMap<>();
+      return;
+    }
+    int start = adj.keySet().iterator().next();
+    Stack<Integer> stack = new Stack<>();
+    stack.push(start);
+    while (!stack.empty())  {
+      int curr = stack.pop();
+      if (!explored.get(curr)) {
+        explored.put(curr, true);
+        for (int i : adj.get(curr))  {
+          stack.push(i);
+        }
+        adj.remove(curr);
+      }
+    }
+  }
+
 
   public static void main(String[] args) {
     long startTime = System.nanoTime();
