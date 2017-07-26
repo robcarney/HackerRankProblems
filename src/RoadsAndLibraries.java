@@ -1,62 +1,46 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class RoadsAndLibraries {
 
-  static long cost(long cLib, long cRoad, HashMap<Integer, List<Integer>> g, int gSize)  {
+  static int numDisconnected(ArrayList<List<Integer>> adj) {
+    int result = 0;
+    HashSet<Integer> explored = new HashSet<>();
+
+    for (int i = 0; i < adj.size(); i++)  {
+      if (!explored.contains(i)) {
+        result++;
+        Stack<Integer> stack = new Stack<>();
+        stack.push(i);
+        while (!stack.isEmpty()) {
+          int curr = stack.pop();
+          if (!explored.contains(curr)) {
+            explored.add(curr);
+            for (int j : adj.get(curr)) {
+              if (!explored.contains(j)) {
+                stack.push(j);
+              }
+            }
+          }
+        }
+      }
+    }
+    return result;
+  }
+
+
+  static long cost(long cLib, long cRoad, ArrayList<List<Integer>> g, int gSize)  {
     if (cLib <= cRoad)  {
       return cLib * (long) gSize;
     }
     int discon = numDisconnected(g);
     return (cRoad * (gSize - discon)) + (cLib * discon);
   }
-
-  static int numDisconnected(HashMap<Integer, List<Integer>> adj)  {
-    int result = 0;
-    List<Integer> iter = new ArrayList<>(adj.keySet());
-    for (int k : iter) {
-      if (adj.get(k).size() == 0)  {
-        adj.remove(k);
-        result++;
-      }
-    }
-    HashMap<Integer,Boolean> explored = new HashMap<>();
-    for (int i : adj.keySet())  {
-      explored.put(i,false);
-    }
-    while (!adj.keySet().isEmpty())  {
-      result++;
-      depthFirstSearch(adj,explored);
-    }
-    System.out.println("result");
-    System.out.println(result);
-    return result;
-  }
-
-  static void depthFirstSearch(HashMap<Integer,List<Integer>> adj, HashMap<Integer,Boolean> explored)  {
-    if (adj.keySet().size() == 0)  {
-      adj = new HashMap<>();
-      return;
-    }
-    int start = adj.keySet().iterator().next();
-    Stack<Integer> stack = new Stack<>();
-    stack.push(start);
-    while (!stack.empty())  {
-      int curr = stack.pop();
-      if (!explored.get(curr)) {
-        explored.put(curr, true);
-        for (int i : adj.get(curr))  {
-          stack.push(i);
-        }
-        adj.remove(curr);
-      }
-    }
-  }
-
 
   public static void main(String[] args) {
     long startTime = System.nanoTime();
@@ -67,17 +51,16 @@ public class RoadsAndLibraries {
       int q = in.nextInt();
       for(int a0 = 0; a0 < q; a0++){
         int n = in.nextInt();
-        HashMap<Integer, List<Integer>> adj = new HashMap<>();
+        ArrayList<List<Integer>> adj = new ArrayList<>();
+        for (int i = 0; i < n; i++)  {
+          adj.add(new ArrayList<>());
+        }
         int m = in.nextInt();
         long x = in.nextLong();
         long y = in.nextLong();
         if (x < y && a0 == q - 1)  {
-          System.out.println(cost(x,y,adj,n));
           in.close();
           break;
-        }
-        for (int i = 0; i < n; i++)  {
-          adj.put(i, new ArrayList<>());
         }
         for (int a1 = 0; a1 < m; a1++) {
           int city_1 = in.nextInt() - 1;
@@ -90,11 +73,12 @@ public class RoadsAndLibraries {
     } catch (Exception ex)  {
       ex.printStackTrace();
       System.exit(0);
-    }/*
+    }
     for (long l : costs)  {
       System.out.println(l);
-    }*/
+    }
     long elapsedTime = System.nanoTime() - startTime;
-    //System.out.println((double) elapsedTime / 1000000000.0);
+    System.out.println((double) elapsedTime / 1000000000.0);
+
   }
 }
