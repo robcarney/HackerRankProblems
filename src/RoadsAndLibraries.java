@@ -7,7 +7,7 @@ import java.util.Stack;
 
 public class RoadsAndLibraries {
 
-  public static long cost(long cLib, long cRoad, HashMap<Integer, List<Integer>> g, int gSize)  {
+  static long cost(long cLib, long cRoad, HashMap<Integer, List<Integer>> g, int gSize)  {
     if (cLib <= cRoad)  {
       return cLib * (long) gSize;
     }
@@ -32,6 +32,8 @@ public class RoadsAndLibraries {
       result++;
       depthFirstSearch(adj,explored);
     }
+    System.out.println("result");
+    System.out.println(result);
     return result;
   }
 
@@ -67,11 +69,16 @@ public class RoadsAndLibraries {
         int n = in.nextInt();
         HashMap<Integer, List<Integer>> adj = new HashMap<>();
         int m = in.nextInt();
+        long x = in.nextLong();
+        long y = in.nextLong();
+        if (x < y && a0 == q - 1)  {
+          System.out.println(cost(x,y,adj,n));
+          in.close();
+          break;
+        }
         for (int i = 0; i < n; i++)  {
           adj.put(i, new ArrayList<>());
         }
-        long x = in.nextLong();
-        long y = in.nextLong();
         for (int a1 = 0; a1 < m; a1++) {
           int city_1 = in.nextInt() - 1;
           int city_2 = in.nextInt() - 1;
@@ -83,11 +90,11 @@ public class RoadsAndLibraries {
     } catch (Exception ex)  {
       ex.printStackTrace();
       System.exit(0);
-    }
+    }/*
     for (long l : costs)  {
       System.out.println(l);
-    }
+    }*/
     long elapsedTime = System.nanoTime() - startTime;
-    System.out.println((double) elapsedTime / 1000000000.0);
+    //System.out.println((double) elapsedTime / 1000000000.0);
   }
 }
