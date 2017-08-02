@@ -29,10 +29,10 @@ public class BFS {
                     result.set(curr, prevDist);
                 }
                 for (int n : adj.get(curr))  {
-                    if (!explored[n])  {
-                        prev.put(n,curr);
-                        queue.add(n);
+                    if (prev.get(n) == null) {
+                        prev.put(n, curr);
                     }
+                    queue.add(n);
                 }
             }
         }
@@ -72,6 +72,11 @@ public class BFS {
             ex.printStackTrace();
             System.exit(0);
         }
+    }
+
+    public static void printQueue(Queue<Integer> q)  {
+        System.out.print("Next neighbor: ");
+        System.out.println(q.peek());
     }
 
     public static void printAdj(ArrayList<ArrayList<Integer>> adj)  {
