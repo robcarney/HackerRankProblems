@@ -73,22 +73,4 @@ public class BFS {
             System.exit(0);
         }
     }
-
-    public static void printQueue(Queue<Integer> q)  {
-        System.out.print("Next neighbor: ");
-        System.out.println(q.peek());
-    }
-
-    public static void printAdj(ArrayList<ArrayList<Integer>> adj)  {
-        int count = 0;
-        for (ArrayList<Integer> l1 : adj)  {
-            System.out.print(count);
-            System.out.println(":");
-            for (int i : l1)  {
-                System.out.print("    ");
-                System.out.println(i);
-            }
-            count++;
-        }
-    }
 }
