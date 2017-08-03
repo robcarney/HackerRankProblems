@@ -41,7 +41,6 @@ public class BFS {
 
     public static void main(String[] args)  {
         File file = new File("input.txt");
-        List<Long> costs = new ArrayList<>();
         try {
             Scanner in = new Scanner(file);
             int q = in.nextInt();
