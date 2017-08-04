@@ -22,7 +22,7 @@ public class Kruskals {
 
         @Override
         public int compareTo(Edge o) {
-            return this.weight = o.weight;
+            return this.weight - o.weight;
         }
     }
 
@@ -68,6 +68,14 @@ public class Kruskals {
                 totalWeight += curr.weight;
                 numEdgesInTree++;
             }
+            else  {
+                System.out.print("Not adding: ");
+                System.out.print(s);
+                System.out.print(" ");
+                System.out.print(e);
+                System.out.print(" ");
+                System.out.println(curr.weight);
+            }
         }
         return totalWeight;
     }
@@ -87,7 +95,11 @@ public class Kruskals {
                 int w = in.nextInt();
                 Edge curr = new Edge(s,e, w);
                 edges.add(curr);
-            }
+            }/*
+            for (int i = 0; i < m; i++)  {
+                Edge curr = edges.poll();
+                System.out.println(curr.start + " " + curr.end + " " + curr.weight);
+            }*/
             System.out.println(kruskals(edges,n));
         } catch (Exception ex)  {
             ex.printStackTrace();
