@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82bd90b1-63a9-404f-be79-98c59f3e0313" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/QuickSort.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/QuickSort.java" afterPath="$PROJECT_DIR$/src/QuickSort.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -55,9 +55,11 @@
       <file leaf-file-name="QuickSort.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/QuickSort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-              <folding />
+            <state relative-caret-position="120">
+              <caret line="8" column="75" lean-forward="true" selection-start-line="8" selection-start-column="75" selection-end-line="12" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -118,6 +120,7 @@
         <option value="$PROJECT_DIR$/input.txt" />
         <option value="$PROJECT_DIR$/src/Kruskals.java" />
         <option value="$PROJECT_DIR$/src/FibModified.java" />
+        <option value="$PROJECT_DIR$/src/QuickSort.java" />
       </list>
     </option>
   </component>
@@ -624,7 +627,7 @@
     </configuration>
     <configuration default="false" name="GraphTest" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="FibModified" />
+      <option name="MAIN_CLASS_NAME" value="QuickSort" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -654,12 +657,12 @@
       <workItem from="1500343399404" duration="30231000" />
       <workItem from="1501115363375" duration="2881000" />
       <workItem from="1501545845875" duration="5016000" />
-      <workItem from="1501788203110" duration="4343000" />
+      <workItem from="1501788203110" duration="5914000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73317000" />
+    <option name="totallyTimeSpent" value="74888000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1061,9 +1064,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/QuickSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-          <folding />
+        <state relative-caret-position="120">
+          <caret line="8" column="75" lean-forward="true" selection-start-line="8" selection-start-column="75" selection-end-line="12" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
