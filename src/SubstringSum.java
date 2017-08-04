@@ -1,40 +1,34 @@
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by robertcarney on 8/4/17.
  */
 public class SubstringSum {
 
-    static BigInteger substringSum(String num)  {
-        BigInteger result = BigInteger.ZERO;
-        ArrayList<String> workingList = new ArrayList<>();
-        BigInteger toMod = new BigInteger("1000000007");
-        /*
-        for (int i = num.length() - 1; i >= 0; i--)  {
-            for (String str : workingList)  {
-                result = result.add(new BigInteger(str));
+    static long intSubSum(String num)  {
+        long result = 0;
+        long[] tenPowTable = new long[num.length()];
+        long toAdd = 1;
+        long toMult = 1;
+        int toMod = 1000000007;
+        for (int k = 0; k < num.length(); k++)  {
+            if (k != 0) {
+                toAdd = (toAdd + toMult) % toMod;
             }
-            String s = num.substring(i, i+1);
-            for (int j = 0; j < workingList.size(); j++)  {
-                workingList.set(j, s + workingList.get(j));
-            }
-            workingList.add(s);
+            toMult = (toMult * 10) % toMod;
+            tenPowTable[k] = toAdd % toMod;
         }
-        for (String str : workingList)  {
-            result = result.add(new BigInteger(str));
-        }*/
-        for (int i = num.length() - 1; i >= 0; i--)  {
-            String curr = num.substring(i,num.length());
-            for (int j = 1; j <= curr.length(); j++)  {
-                BigInteger toAdd = new BigInteger(curr.substring(0, j));
-                result = result.add(toAdd);
-            }
+        for (int i = 0; i < num.length(); i++)  {
+            int curr = Integer.parseInt(num.substring(i,i+1));
+            int tensInd = num.length() - i - 1;
+            result += (curr * ((i + 1) * tenPowTable[tensInd])) % toMod;
         }
-        return result.mod(toMod);
+        return result % toMod;
     }
 
     public static void main(String[] args)  {
-        System.out.println(substringSum("123"));
+        System.out.println(intSubSum("960880276897"));
     }
 }
