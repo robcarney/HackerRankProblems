@@ -9,6 +9,8 @@ public class SubstringSum {
     static BigInteger substringSum(String num)  {
         BigInteger result = BigInteger.ZERO;
         ArrayList<String> workingList = new ArrayList<>();
+        BigInteger toMod = new BigInteger("1000000007");
+        /*
         for (int i = num.length() - 1; i >= 0; i--)  {
             for (String str : workingList)  {
                 result = result.add(new BigInteger(str));
@@ -21,12 +23,18 @@ public class SubstringSum {
         }
         for (String str : workingList)  {
             result = result.add(new BigInteger(str));
+        }*/
+        for (int i = num.length() - 1; i >= 0; i--)  {
+            String curr = num.substring(i,num.length());
+            for (int j = 1; j <= curr.length(); j++)  {
+                BigInteger toAdd = new BigInteger(curr.substring(0, j));
+                result = result.add(toAdd);
+            }
         }
-        BigInteger toMod = new BigInteger("7000000000");
         return result.mod(toMod);
     }
 
     public static void main(String[] args)  {
-        System.out.println(substringSum("16543"));
+        System.out.println(substringSum("123"));
     }
 }
