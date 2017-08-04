@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 /**
@@ -5,12 +6,12 @@ import java.util.ArrayList;
  */
 public class SubstringSum {
 
-    static int substringSum(String num)  {
-        int result = 0;
+    static BigInteger substringSum(String num)  {
+        BigInteger result = BigInteger.ZERO;
         ArrayList<String> workingList = new ArrayList<>();
         for (int i = num.length() - 1; i >= 0; i--)  {
             for (String str : workingList)  {
-                result += Integer.parseInt(str);
+                result = result.add(new BigInteger(str));
             }
             String s = num.substring(i, i+1);
             for (int j = 0; j < workingList.size(); j++)  {
@@ -19,12 +20,13 @@ public class SubstringSum {
             workingList.add(s);
         }
         for (String str : workingList)  {
-            result += Integer.parseInt(str);
+            result = result.add(new BigInteger(str));
         }
-        return result;
+        BigInteger toMod = new BigInteger("7000000000");
+        return result.mod(toMod);
     }
 
     public static void main(String[] args)  {
-        System.out.println(substringSum("123"));
+        System.out.println(substringSum("16543"));
     }
 }
