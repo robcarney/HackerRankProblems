@@ -8,7 +8,7 @@ public class SubstringSum {
     static int substringSum(String num)  {
         int result = 0;
         ArrayList<String> workingList = new ArrayList<>();
-        for (int i = 0; i < num.length(); i++)  {
+        for (int i = num.length() - 1; i >= 0; i--)  {
             for (String str : workingList)  {
                 result += Integer.parseInt(str);
             }
