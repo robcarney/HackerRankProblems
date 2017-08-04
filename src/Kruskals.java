@@ -9,7 +9,7 @@ import java.util.Stack;
  */
 public class Kruskals {
 
-    static class Edge  {
+    static class Edge implements Comparable<Edge> {
         int start;
         int end;
         int weight;
@@ -18,6 +18,11 @@ public class Kruskals {
             this.start = start;
             this.end = end;
             this.weight = weight;
+        }
+
+        @Override
+        public int compareTo(Edge o) {
+            return this.weight = o.weight;
         }
     }
 
@@ -30,8 +35,11 @@ public class Kruskals {
             if (curr == end)  {
                 return true;
             }
-            for (int i : adj.get(curr))  {
-                s.push(i);
+            if (!explored[curr]) {
+                explored[curr] = true;
+                for (int i : adj.get(curr)) {
+                    s.push(i);
+                }
             }
         }
         return false;
@@ -40,7 +48,7 @@ public class Kruskals {
     public static int kruskals(PriorityQueue<Edge> edges, int numNodes)  {
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>(numNodes);
         for (int i = 0; i < numNodes; i++)  {
-            adj.set(i, new ArrayList<>());
+            adj.add(new ArrayList<>());
         }
         int numEdgesInTree = 0;
         int totalWeight = 0;
@@ -49,6 +57,12 @@ public class Kruskals {
             int s = curr.start;
             int e = curr.end;
             if (!hasPath(adj, s, e))  {
+                System.out.print("Adding: ");
+                System.out.print(s);
+                System.out.print(" ");
+                System.out.print(e);
+                System.out.print(" ");
+                System.out.println(curr.weight);
                 adj.get(s).add(e);
                 adj.get(e).add(s);
                 totalWeight += curr.weight;
@@ -68,13 +82,15 @@ public class Kruskals {
             int m = in.nextInt();
             PriorityQueue<Edge> edges = new PriorityQueue<>(m);
             for (int i = 0; i < m; i++)  {
-                int s = in.nextInt();
-                int e = in.nextInt();
+                int s = in.nextInt() - 1;
+                int e = in.nextInt() - 1;
                 int w = in.nextInt();
                 Edge curr = new Edge(s,e, w);
                 edges.add(curr);
             }
+            System.out.println(kruskals(edges,n));
         } catch (Exception ex)  {
+            ex.printStackTrace();
             System.exit(0);
         }
     }
