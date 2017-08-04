@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82bd90b1-63a9-404f-be79-98c59f3e0313" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SubstringSum.java" afterPath="$PROJECT_DIR$/src/SubstringSum.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Abbreviation.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/RepairRoads.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/RoadGraphProblem.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,7 +67,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SubstringSum.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SubstringSum.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SubstringSum.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
@@ -74,6 +77,16 @@
                 <element signature="e#922#923#0" expanded="true" />
                 <element signature="e#983#984#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Abbreviation.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Abbreviation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="25" lean-forward="false" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -672,12 +685,12 @@
       <workItem from="1500343399404" duration="30231000" />
       <workItem from="1501115363375" duration="2881000" />
       <workItem from="1501545845875" duration="5016000" />
-      <workItem from="1501788203110" duration="14266000" />
+      <workItem from="1501788203110" duration="14992000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83240000" />
+    <option name="totallyTimeSpent" value="83966000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -903,9 +916,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -939,9 +950,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="394">
           <caret line="215" column="15" lean-forward="true" selection-start-line="215" selection-start-column="15" selection-end-line="215" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1039,22 +1048,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RepairRoads.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RoadGraphProblem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2355">
-          <caret line="161" column="25" lean-forward="true" selection-start-line="161" selection-start-column="25" selection-end-line="161" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Kruskals.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1096,6 +1089,30 @@
             <element signature="e#922#923#0" expanded="true" />
             <element signature="e#983#984#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RepairRoads.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RoadGraphProblem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1794">
+          <caret line="161" column="25" lean-forward="true" selection-start-line="161" selection-start-column="25" selection-end-line="161" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Abbreviation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="25" lean-forward="false" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
