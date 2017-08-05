@@ -23,12 +23,17 @@ public class Abbreviation {
         for (int i = strSize; i > 0; i--)  {
             int iIndex = strSize - i + 1;
             String currS = str.substring(i-1,i);
-            boolean uppercase = !currS.equals(currS);
+            boolean uppercase = !currS.equals(currS.toLowerCase());
             for (int j = tSize; j > 0; j--)  {
                 int jIndex = tSize - j + 1;
                 String currT = target.substring(j-1,j);
                 if (currS.equalsIgnoreCase(currT))  {
-                    memo[iIndex][jIndex] = (memo[iIndex-1][jIndex-1] || memo[iIndex-1][jIndex]);
+                    if (uppercase)  {
+                        memo[iIndex][jIndex] = memo[iIndex-1][jIndex-1];
+                    }
+                    else {
+                        memo[iIndex][jIndex] = (memo[iIndex - 1][jIndex - 1] || memo[iIndex - 1][jIndex]);
+                    }
                 }
                 else if (uppercase)  {
                     memo[iIndex][jIndex] = false;
