@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82bd90b1-63a9-404f-be79-98c59f3e0313" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/EqualCandies.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EqualCandies.java" afterPath="$PROJECT_DIR$/src/EqualCandies.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -105,8 +105,8 @@
       <file leaf-file-name="EqualCandies.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/EqualCandies.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="25" lean-forward="false" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+            <state relative-caret-position="120">
+              <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -172,6 +172,7 @@
         <option value="$PROJECT_DIR$/src/Abbreviation.java" />
         <option value="$PROJECT_DIR$/input.txt" />
         <option value="$PROJECT_DIR$/src/BotPrincess1.java" />
+        <option value="$PROJECT_DIR$/src/EqualCandies.java" />
       </list>
     </option>
   </component>
@@ -708,12 +709,12 @@
       <workItem from="1500343399404" duration="30231000" />
       <workItem from="1501115363375" duration="2881000" />
       <workItem from="1501545845875" duration="5016000" />
-      <workItem from="1501788203110" duration="22064000" />
+      <workItem from="1501788203110" duration="22200000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91038000" />
+    <option name="totallyTimeSpent" value="91174000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1153,8 +1154,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/EqualCandies.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="25" lean-forward="false" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+        <state relative-caret-position="120">
+          <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
           <folding />
         </state>
       </provider>
