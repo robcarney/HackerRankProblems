@@ -16,11 +16,7 @@ public class EqualCandies {
         int minOps = 0;
         int min1Ops = 0;
         int min2Ops = 0;
-        for (int i : nums)  {
-            boolean cond = i == 0;
-            if (cond)  {
-                //System.out.println(minOps);
-            }
+        for (int i : nums) {
             int target = i - min;
             minOps += target / 5;
             target = target % 5;
@@ -41,13 +37,7 @@ public class EqualCandies {
             min2Ops += min2 / 2;
             min2 = min2 % 2;
             min2Ops += min2;
-            if (cond)  {
-                //System.out.println(minOps);
-            }
-        }/*
-        System.out.println(minOps);
-        System.out.println(min1Ops);
-*/
+        }
         if (min2Ops < min1Ops && min2Ops < minOps)  {
             return min2Ops;
         }
