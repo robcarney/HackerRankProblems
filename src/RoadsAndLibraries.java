@@ -44,7 +44,7 @@ public class RoadsAndLibraries {
 
   public static void main(String[] args) {
     long startTime = System.nanoTime();
-    File file = new File("input1.txt");
+    File file = new File("input.txt");
     List<Long> costs = new ArrayList<>();
     try {
       Scanner in = new Scanner(file);
