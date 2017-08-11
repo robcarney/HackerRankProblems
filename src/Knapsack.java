@@ -26,7 +26,7 @@ public class Knapsack {
                 if (currWeight > j)  {
                     bestUpTo[j][i] = sumWithout;
                 } else {
-                    int sumWith = bestUpTo[j - currWeight][i];
+                    int sumWith = currWeight + bestUpTo[j - currWeight][i];
                     bestUpTo[j][i] = (sumWith > sumWithout) ? sumWith : sumWithout;
                 }
             }
