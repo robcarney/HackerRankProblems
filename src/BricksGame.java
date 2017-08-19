@@ -7,7 +7,15 @@ import java.util.Scanner;
 public class BricksGame {
 
 
-
+    static long playBrickGame(int[] bricks)  {
+        long result = 0;
+        long[] memo = new long[bricks.length];
+        long[] sums = new long[bricks.length];
+        int[] revArray = new int[bricks.length];
+        for (int i = 0; i < bricks.length; i++)  {
+            
+        }
+    }
 
 
     public static void main(String[] args)  {
