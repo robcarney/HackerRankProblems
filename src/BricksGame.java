@@ -17,8 +17,9 @@ public class BricksGame {
             int q = sc.nextInt();
             for (int i = 0; i < q; i++)  {
                 int n = sc.nextInt();
+                int[] bricks = new int[n];
                 for (int j = 0; j < n; j++)  {
-                    
+                    bricks[j] = sc.nextInt();
                 }
             }
         } catch (Exception ex)  {
