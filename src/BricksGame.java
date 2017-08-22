@@ -10,7 +10,7 @@ public class BricksGame {
     static long playBrickGame(int[] bricks)  {
         long result = 0;
         int blength = bricks.length;
-        long[] memo = new long[blength;
+        long[] memo = new long[blength];
         long[] sums = new long[blength];
         int[] revArray = new int[blength];
         for (int i = 0; i < blength; i++)  {
@@ -30,8 +30,18 @@ public class BricksGame {
         for (int i = 3; i < blength; i++)  {
             long one = memo[i-3];
             long two = memo[i-2];
-            
+            long three = memo[i-1];
+            if (one <= two && one <= three)  {
+                memo[i] = sums[i] - one;
+            }
+            else if (two <= one && two <= three)  {
+                memo[i] = sums[i] - two;
+            }
+            else  {
+                memo[i] = sums[i] - three;
+            }
         }
+        return memo[blength - 1];
     }
 
 
@@ -46,6 +56,7 @@ public class BricksGame {
                 for (int j = 0; j < n; j++)  {
                     bricks[j] = sc.nextInt();
                 }
+                System.out.println(playBrickGame(bricks));
             }
         } catch (Exception ex)  {
             ex.printStackTrace();
