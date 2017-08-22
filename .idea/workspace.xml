@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="82bd90b1-63a9-404f-be79-98c59f3e0313" name="Default" comment="" />
+    <list default="true" id="82bd90b1-63a9-404f-be79-98c59f3e0313" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BricksGame.java" afterPath="$PROJECT_DIR$/src/BricksGame.java" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +39,8 @@
       <file leaf-file-name="BricksGame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BricksGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="37" lean-forward="true" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+            <state relative-caret-position="480">
+              <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -637,12 +639,12 @@
       <workItem from="1501115363375" duration="2881000" />
       <workItem from="1501545845875" duration="5016000" />
       <workItem from="1501788203110" duration="27444000" />
-      <workItem from="1502474510915" duration="4548000" />
+      <workItem from="1502474510915" duration="5155000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100966000" />
+    <option name="totallyTimeSpent" value="101573000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1085,8 +1087,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BricksGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="37" lean-forward="true" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+        <state relative-caret-position="480">
+          <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
