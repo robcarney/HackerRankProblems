@@ -13,7 +13,7 @@ public class BricksGame {
         long[] sums = new long[bricks.length];
         int[] revArray = new int[bricks.length];
         for (int i = 0; i < bricks.length; i++)  {
-            
+
         }
     }
 
