@@ -51,9 +51,11 @@
       <file leaf-file-name="LIS.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LIS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-              <folding />
+            <state relative-caret-position="165">
+              <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -652,12 +654,12 @@
       <workItem from="1501788203110" duration="27444000" />
       <workItem from="1502474510915" duration="5470000" />
       <workItem from="1503637509764" duration="12000" />
-      <workItem from="1503765989523" duration="250000" />
+      <workItem from="1503765989523" duration="443000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102150000" />
+    <option name="totallyTimeSpent" value="102343000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1117,9 +1119,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LIS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding />
+        <state relative-caret-position="165">
+          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
