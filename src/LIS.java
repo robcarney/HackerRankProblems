@@ -12,8 +12,8 @@ public class LIS {
         if (seq.isEmpty())  {
             return 0;
         }
-        ArrayList<ArrayList<Integer>> memo = new ArrayList<>(seq.size());
-        memo.set(0, new ArrayList<>());
+        ArrayList<ArrayList<Integer>> memo = new ArrayList<>();
+        memo.add(new ArrayList<>());
         memo.get(0).add(seq.get(0));
         for (int i = 1; i < seq.size(); i++)  {
             int curr = seq.get(i);
@@ -37,7 +37,7 @@ public class LIS {
                 }
                 workingList.add(curr);
             }
-            memo.set(i, workingList);
+            memo.add(workingList);
         }
         int maxSize = 0;
         for (ArrayList<Integer> list : memo)  {
@@ -54,12 +54,13 @@ public class LIS {
         try  {
             Scanner sc = new Scanner(f);
             int n = sc.nextInt();
-            ArrayList<Integer> seq = new ArrayList<>(n);
+            ArrayList<Integer> seq = new ArrayList<>();
             for (int i = 0; i < n; i++)  {
-                seq.set(i,sc.nextInt());
+                seq.add(sc.nextInt());
             }
+            System.out.println(longestIS(seq));
         } catch (Exception ex) {
-
+            ex.printStackTrace();
         }
     }
 }
