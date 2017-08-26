@@ -1,5 +1,4 @@
 import java.io.File;
-import java.rmi.activation.ActivationGroup_Stub;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,7 +21,7 @@ public class LIS {
             int listSize = 0;
             for (int j = 0; j < i; j++)  {
                 ArrayList<Integer> currList = memo.get(j);
-                if (curr < currList.get(currList.size() - 1) && currList.size() >= listSize)  {
+                if (curr <= currList.get(currList.size() - 1) && currList.size() >= listSize)  {
                     listToUse = j;
                     listSize = currList.size();
                 }
