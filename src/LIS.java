@@ -11,34 +11,19 @@ public class LIS {
         if (sLength == 0)  {
             return 0;
         }
-        int[][] memoSeq = new int[sLength][sLength];
         int[] memoLengths = new int[sLength];
-        int[] first = new int[sLength];
-        first[0] = seq[0];
-        memoSeq[0] = first;
         memoLengths[0] = 1;
         for (int i = 1; i < sLength; i++)  {
+            if (i%20 == 0) {
+                System.out.println(i);
+            }
             int curr = seq[i];
-            int[] workingList = new int[sLength];
-            int listToUse = -1;
             int listSize = 0;
             for (int j = 0; j < i; j++)  {
-                if (curr > seq[j] && memoLengths[j] >= listSize)  {
-                    listToUse = j;
+                if (curr > seq[j] && memoLengths[j] > listSize)  {
                     listSize = memoLengths[j];
                 }
             }
-            if (listToUse == -1)  {
-                workingList[0] = curr;
-            }
-            else {
-                int[] toCopy = memoSeq[listToUse];
-                for (int x = 0; x < listSize; x++)  {
-                    workingList[x] = toCopy[x];
-                }
-                workingList[listSize] = curr;
-            }
-            memoSeq[i] = workingList;
             memoLengths[i] = listSize + 1;
         }
         int maxSize = 0;
