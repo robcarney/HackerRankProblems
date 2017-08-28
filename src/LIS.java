@@ -6,56 +6,58 @@ import java.util.Scanner;
  * Created by robertcarney on 8/26/17.
  */
 public class LIS {
-
-    static int longestIS(ArrayList<Integer> seq)  {
-        if (seq.isEmpty())  {
+    static int longestIS(int[] seq)  {
+        int sLength = seq.length;
+        if (sLength == 0)  {
             return 0;
         }
-        ArrayList<ArrayList<Integer>> memo = new ArrayList<>();
-        memo.add(new ArrayList<>());
-        memo.get(0).add(seq.get(0));
-        for (int i = 1; i < seq.size(); i++)  {
-            int curr = seq.get(i);
-            ArrayList<Integer> workingList = new ArrayList<>();
+        int[][] memoSeq = new int[sLength][sLength];
+        int[] memoLengths = new int[sLength];
+        int[] first = new int[sLength];
+        first[0] = seq[0];
+        memoSeq[0] = first;
+        memoLengths[0] = 1;
+        for (int i = 1; i < sLength; i++)  {
+            int curr = seq[i];
+            int[] workingList = new int[sLength];
             int listToUse = -1;
             int listSize = 0;
             for (int j = 0; j < i; j++)  {
-                ArrayList<Integer> currList = memo.get(j);
-                if (curr >= seq.get(j) && currList.size() >= listSize)  {
+                if (curr > seq[j] && memoLengths[j] >= listSize)  {
                     listToUse = j;
-                    listSize = currList.size();
+                    listSize = memoLengths[j];
                 }
             }
             if (listToUse == -1)  {
-                workingList.add(curr);
+                workingList[0] = curr;
             }
             else {
-                ArrayList<Integer> toCopy = memo.get(listToUse);
-                for (int x : toCopy)  {
-                    workingList.add(x);
+                int[] toCopy = memoSeq[listToUse];
+                for (int x = 0; x < listSize; x++)  {
+                    workingList[x] = toCopy[x];
                 }
-                workingList.add(curr);
+                workingList[listSize] = curr;
             }
-            memo.add(workingList);
+            memoSeq[i] = workingList;
+            memoLengths[i] = listSize + 1;
         }
         int maxSize = 0;
-        for (ArrayList<Integer> list : memo)  {
-            if (list.size() > maxSize)  {
-                maxSize = list.size();
+        for (int k = 0; k < sLength; k++)  {
+            if (memoLengths[k] > maxSize)  {
+                maxSize = memoLengths[k];
             }
         }
         return maxSize;
     }
-
 
     public static void main(String[] args)  {
         File f = new File("input.txt");
         try  {
             Scanner sc = new Scanner(f);
             int n = sc.nextInt();
-            ArrayList<Integer> seq = new ArrayList<>();
+            int[] seq = new int[n];
             for (int i = 0; i < n; i++)  {
-                seq.add(sc.nextInt());
+                seq[i] = sc.nextInt();
             }
             System.out.println(longestIS(seq));
         } catch (Exception ex) {
