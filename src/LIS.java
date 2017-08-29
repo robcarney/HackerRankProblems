@@ -8,6 +8,32 @@ import java.util.Scanner;
  */
 public class LIS {
 
+    static void printArray(int[] l, int n)  {
+        for (int i = 0; i < n; i++)  {
+            System.out.println(l[i]);
+        }
+    }
+
+    static int binarySearchWithPrint(int[] seq, int[] tI, int r, int l, int key)  {
+        printArray(tI, r);
+        System.out.println("Initial R ="+r);
+        System.out.println("Initial L ="+l);
+        System.out.println("Key = "+key);
+        while (r - l > 1)  {
+            int m = (l+r)/2;
+            if (seq[tI[m]] >= key)  {
+                System.out.println("Result: "+ seq[tI[m]] + ">=" + key);
+                System.out.println("R = "+m);
+                r = m;
+            }  else  {
+                System.out.println("Result: "+ seq[tI[m]] + "<" + key);
+                System.out.println("L = "+m);
+                l = m;
+            }
+        }
+        return r;
+    }
+
     static int binarySearch(int[] seq, int[] tI, int r, int l, int key)  {
         while (r - l > 1)  {
             int m = (l+r)/2;
@@ -34,9 +60,15 @@ public class LIS {
                 pI[i] = tI[len-1];
                 tI[len++] = i;
             }  else  {
-                int pos = binarySearch(seq, tI, len-1, -1, seq[i]);
-                tI[pos] = i;
-                pI[i] = tI[pos-1];
+                try {
+                    int pos = 0;
+                    pos = binarySearch(seq, tI, len - 1, -1, seq[i]);
+                    tI[pos] = i;
+                    pI[i] = (pos!=0) ? tI[pos - 1] : -1;
+                } catch (Exception ex) {
+                    System.out.println(i);
+                    throw ex;
+                }
             }
         }
         int count = 0;
@@ -75,7 +107,7 @@ public class LIS {
     }
 
     public static void main(String[] args)  {
-        File f = new File("input1.txt");
+        File f = new File("input.txt");
         try  {
             Scanner sc = new Scanner(f);
             int n = sc.nextInt();
