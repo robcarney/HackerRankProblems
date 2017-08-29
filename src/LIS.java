@@ -23,6 +23,7 @@ public class LIS {
     static int longestIS(int[] seq)  {
         int n = seq.length;
         int[] tI = new int[n];
+        Arrays.fill(tI,0);
         int[] pI = new int[n];
         Arrays.fill(pI,-1);
         int len = 1;
