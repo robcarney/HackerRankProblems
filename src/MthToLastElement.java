@@ -14,8 +14,14 @@ public class MthToLastElement {
             Scanner sc = new Scanner(f);
             LinkedList<Integer> l = new LinkedList<>();
             int n = sc.nextInt();
+            int i = 0;
             while (sc.hasNextInt())  {
                 l.add(sc.nextInt());
+                i++;
+            }
+            if (i < n)  {
+                System.out.println("NIL");
+                return;
             }
             int count = 1;
             while (count < n)  {
