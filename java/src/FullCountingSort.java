@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,15 +28,24 @@ public class FullCountingSort {
 
     for (int nItr = 0; nItr < n; nItr++) {
       String[] xs = scanner.nextLine().split(" ");
-
       int x = Integer.parseInt(xs[0]);
-
       String s = nItr < n / 2 ? "-" : xs[1];
-
-      countToStrings.putIfAbsent()
-
+      countToStrings.putIfAbsent(x, new ArrayList<>());
+      countToStrings.get(x).add(s);
     }
 
+    List<Integer> sortedNums = new ArrayList<>(countToStrings.keySet().size());
+    sortedNums.addAll(countToStrings.keySet());
+    Collections.sort(sortedNums);
+    StringBuilder result = new StringBuilder();
+    for (Integer i : sortedNums) {
+      List<String> currStrings = countToStrings.get(i);
+      for (int j = 0; j < currStrings.size(); j++) {
+        result.append(currStrings.get(j));
+        result.append(" ");
+      }
+    }
+    System.out.println(result.toString());
     scanner.close();
   }
 }
