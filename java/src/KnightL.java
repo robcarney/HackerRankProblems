@@ -14,12 +14,30 @@ import java.util.Scanner;
 public class KnightL {
 
   private int[][] runKnightL(int n)  {
-    int[][] result = new int[n][n];
-    for (int i = 0; i < n; i++)  {
-      for (int j = 0; j < n; j++)  {
-        int currBest = doBfs(i, j, n);
-        result[i][j] = currBest;
-        result[j][i] = currBest;
+    int[][] result = new int[n-1][n-1];
+    for (int i = 1; i < n; i++)  {
+      for (int j = i; j < n; j++)  {
+        int currBest;
+        if (i == j)  {
+          if ((n - 1) % i == 0)  {
+            currBest = (n - 1) / i;
+          } else {
+            currBest = -1;
+          }
+        } else if (j == n - 1)  {
+          if ((n - 1) % i == 0)  {
+            currBest = ((n - 1) / i);
+            if (currBest % 2 == 0)  {
+              currBest *= 2;
+            }
+          } else {
+            currBest = -1;
+          }
+        } else {
+          currBest = doBfs(i, j, n);
+        }
+        result[i-1][j-1] = currBest;
+        result[j-1][i-1] = currBest;
       }
     }
     return result;
@@ -33,6 +51,9 @@ public class KnightL {
     queue.add(new Point(0, 0));
     while (!queue.isEmpty())  {
       Point currentPoint = queue.poll();
+      if (seen[currentPoint.x][currentPoint.y])  {
+        continue;
+      }
       seen[currentPoint.x][currentPoint.y] = true;
       int currLevel = level[currentPoint.x][currentPoint.y];
       List<Point> validPoints = validPoints(currentPoint, n, i, j);
@@ -52,6 +73,7 @@ public class KnightL {
   }
 
   private List<Point> validPoints(Point currentPoint, int limit, int i, int j) {
+    assert i < j;
     List<Point> result = new ArrayList<>();
     int x = currentPoint.x;
     int y = currentPoint.y;
@@ -70,13 +92,13 @@ public class KnightL {
       if (yjLess >= 0) {
         result.add(new Point(xiMore, yjLess));
       }
-    }
-    if (xjMore < limit)  {
-      if (yiMore < limit)  {
-        result.add(new Point(xjMore, yiMore));
-      }
-      if (yiLess >= 0)  {
-        result.add(new Point(xjMore, yiLess));
+      if (xjMore < limit)  {
+        if (yiMore < limit)  {
+          result.add(new Point(xjMore, yiMore));
+        }
+        if (yiLess >= 0) {
+          result.add(new Point(xjMore, yiLess));
+        }
       }
     }
     if (xiLess >= 0)  {
@@ -86,13 +108,13 @@ public class KnightL {
       if (yjLess >= 0)  {
         result.add(new Point(xiLess, yjLess));
       }
-    }
-    if (xjLess >= 0)  {
-      if (yiMore < limit)  {
-        result.add(new Point(xjLess, yiMore));
-      }
-      if (yiLess >= 0)  {
-        result.add(new Point(xjLess, yiLess));
+      if (xjLess >= 0)  {
+        if (yiMore < limit)  {
+          result.add(new Point(xjLess, yiMore));
+        }
+        if (yiLess >= 0)  {
+          result.add(new Point(xjLess, yiLess));
+        }
       }
     }
     return result;
@@ -112,9 +134,9 @@ public class KnightL {
     }
     int n = scanner.nextInt();
     int[][] result = new KnightL().runKnightL(n);
-    for (int i = 0; i < n; i++)  {
+    for (int i = 0; i < n - 1; i++)  {
       StringBuilder toPrint = new StringBuilder("");
-      for (int j = 0; j < n; j++) {
+      for (int j = 0; j < n - 1; j++) {
         toPrint.append(result[i][j]);
         toPrint.append(" ");
       }
