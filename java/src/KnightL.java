@@ -17,7 +17,7 @@ public class KnightL {
     int[][] result = new int[n][n];
     for (int i = 0; i < n; i++)  {
       for (int j = 0; j < n; j++)  {
-        int currBest = 0;
+        int currBest = doBfs(i, j, n);
         result[i][j] = currBest;
         result[j][i] = currBest;
       }
