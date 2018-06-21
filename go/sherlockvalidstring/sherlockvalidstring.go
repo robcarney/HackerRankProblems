@@ -11,10 +11,11 @@ import (
 // Complete the isValid function below.
 func isValid(s string) string {
 	valid := true
-	charMap := make(map[char]int)
-	for i := 0; i < s.length(); i++ {
-		charMap[s.charAt(i)] += 1
+	charMap := make(map[byte]int)
+	for i := 0; i < len(s); i++ {
+		charMap[s[i]]++
 	}
+	return s
 }
 
 func main() {
