@@ -11,7 +11,25 @@ import (
 
 // Complete the insertionSort function below.
 func insertionSort(arr []int32) int32 {
+	var moves int32
+	var currMoves int32
+	for idx := range arr {
+		currMoves, arr = insert(arr, idx)
+		moves += currMoves
+	}
+	return moves
+}
 
+func insert(arr []int32, idx int) (int32, []int32) {
+	moves := int32(idx)
+	toInsert := arr[idx]
+	for i, num := range arr[:idx] {
+		if toInsert <= num {
+			return moves, append(append(arr[:i], toInsert), append(arr[i:idx], arr[:idx+1]...)...)
+		}
+		moves--
+	}
+	return 0, arr
 }
 
 func main() {
