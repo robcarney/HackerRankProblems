@@ -10,12 +10,33 @@ import (
 
 // Complete the isValid function below.
 func isValid(s string) string {
-	valid := true
 	charMap := make(map[byte]int)
 	for i := 0; i < len(s); i++ {
 		charMap[s[i]]++
 	}
-	return s
+	currCount := -1
+	usedPlusOne := false
+	charCount := 0
+	for _, v := range charMap {
+		if currCount == -1 {
+			currCount = v
+			charCount++
+		} else if currCount == v {
+			continue
+		} else if !usedPlusOne {
+			if currCount + 1 == v {
+				usedPlusOne = true
+			} else if currCount - 1 == v && charCount == 1 {
+				currCount = v
+				usedPlusOne = true
+			} else {
+				return "NO"
+			}
+		} else {
+			return "NO"
+		}
+	}
+	return "YES"
 }
 
 func main() {
