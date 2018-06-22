@@ -22,16 +22,17 @@ func isValid(s string) string {
 			currCount = v
 			charCount++
 		} else if currCount == v {
-			continue
+			charCount++
 		} else if !usedPlusOne {
-			if currCount + 1 == v {
+			if currCount+1 == v || v == 1 {
 				usedPlusOne = true
-			} else if currCount - 1 == v && charCount == 1 {
+			} else if (currCount-1 == v || currCount == 1) && charCount == 1 {
 				currCount = v
 				usedPlusOne = true
 			} else {
 				return "NO"
 			}
+			charCount++
 		} else {
 			return "NO"
 		}
