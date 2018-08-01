@@ -11,7 +11,27 @@ import (
 
 // Complete the organizingContainers function below.
 func organizingContainers(container [][]int32) string {
-
+	if len(container) == 0 {
+		return "Impossible"
+	}
+	containerCapacities := make([]int32, len(container))
+	ballQuantities := make([]int32, len(container))
+	for idx, containerRow := range container {
+		for jdx, itemQuantity := range containerRow {
+			containerCapacities[idx] += itemQuantity
+			ballQuantities[jdx] += itemQuantity
+		}
+	}
+	for _, containerCap := range containerCapacities {
+		for jdx, ballQuantity := range ballQuantities {
+			if containerCap == ballQuantity {
+				ballQuantities[jdx] = -1
+				break
+			}
+		}
+		return "Impossible"
+	}
+	return "Possible"
 }
 
 func main() {
