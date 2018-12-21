@@ -9,22 +9,21 @@ import sys
 USE_STDIN = False
 
 def minSwaps(arr):
-    seen = []
+    seen = [False] * len(arr)
     swaps = 0
     next = 1
     for curr in arr:
-        if curr in seen:
+        if seen[curr]:
             continue
-        seen.append(curr)
+        seen[curr] = True
         next = arr[curr - 1]
         count = 1
         while next != curr:
             count += 1
-            seen.append(next)
+            seen[next] = True
             next = arr[next - 1]
         swaps += count - 1
     return swaps
-
 
 
 if __name__ == '__main__':
