@@ -51,10 +51,11 @@ def steadyGene(gene, geneLength):
         return 0
     evenCount = geneLength / 4
     geneDict = buildStringDict(gene)
-    leftbound = 0
+    leftbound = 1
     memo = [0] * geneLength
+    memo[0] = rightbound
     while rightbound < geneLength:
-        curr = gene[leftbound]
+        curr = gene[leftbound - 1]
         currDict[curr] += 1
         while currDict[curr] > evenCount:
             currDict[gene[rightbound]] -= 1
