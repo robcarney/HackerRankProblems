@@ -10,40 +10,6 @@ from collections import namedtuple
 
 USE_STDIN = False
 
-# Complete the steadyGene function below.
-def steadyGeneOld(gene, geneLength):
-    geneDict = buildStringDict(gene)
-    evenCount = geneLength / 4
-    numberOff = 0
-    for c in geneDict.keys():
-        if geneDict[c] > evenCount:
-            numberOff += geneDict[c] - evenCount
-    MemoEntry = namedtuple("MemoEntry", "length dict")
-    memo = []
-    for i in range(n):
-        memo.append(MemoEntry(0, {}))
-    lastStart = -1
-    bestDict = {}
-    for i in range(0,n):
-        if geneDict[gene[i]] > evenCount:
-            if lastStart == -1:
-                lastStart = i
-                currNumOff = 1
-                j = i + 1
-                newDict = buildStringDict("")
-                while (currNumOff < numberOff):
-                    if geneDict[gene[j]] - newDict[gene[j]] > evenCount:
-                        currNumOff += 1
-                        newDict[gene[j]] += 1
-                    j += 1
-                memo[i] = MemoEntry(j - i, newDict)
-            else:
-                lastEntry = memo[lastStart]
-                if gene[lastEntry] == gene[i] and lastEntry.dict[gene[i]] > geneDict[gene[i]] - evenCount:
-                    newDict = lastEntry.dict
-                    newDict[gene[i]] -= 1
-    return numberOff
-
 
 def steadyGene(gene, geneLength):
     rightbound, currDict = getRightBound(gene, geneLength)
@@ -60,6 +26,8 @@ def steadyGene(gene, geneLength):
         while currDict[curr] > evenCount:
             currDict[gene[rightbound]] -= 1
             rightbound += 1
+            if rightbound >= geneLength:
+                break
         memo[leftbound] = rightbound - leftbound
         leftbound += 1
     best = 500000
